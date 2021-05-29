@@ -6,6 +6,7 @@ from cdk.s3_stack import S3Stack
 from cdk.DNS_stack import DnsStack
 from cdk.lambda_stack import LambdaStack
 from cdk.dynamodb_stack import DynamodbStack
+from cdk.frontend_pipeline_stack import CodePipelineFrontendStack
 
 environment = core.Environment(
     account=os.environ.get('CDK_DEFAULT_ACCOUNT'),
@@ -30,5 +31,11 @@ lambda_stack = LambdaStack(app,
                             messages_table=dynamodb_stack.chat_messages_table,
                            env=environment
                            )
+
+frontend_pipeline = CodePipelineFrontendStack(app,
+                                              'FrontendPipelineStack',
+                                              webhostingbucket=core.Fn.import_value('frontend-bucket'),
+                                              env=environment
+                                              )
 
 app.synth()
