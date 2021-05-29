@@ -1,0 +1,19 @@
+{
+  "id": "3",
+  "participants": [
+    "Bob",
+    "Alice"
+  ],
+  "messages": [
+    {
+      "sender": "Bob",
+      "time": 1512246342159,
+      "message": "This is Bob. I'm also sending you a message."
+    },
+    {
+      "sender": "Alice",
+      "time": 1512246342159,
+      "message": "This is Alice. I'm also sending you a message."
+    }
+  ]
+}

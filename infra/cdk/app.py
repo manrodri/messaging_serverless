@@ -4,15 +4,31 @@ from aws_cdk import core
 
 from cdk.s3_stack import S3Stack
 from cdk.DNS_stack import DnsStack
+from cdk.lambda_stack import LambdaStack
+from cdk.dynamodb_stack import DynamodbStack
 
+environment = core.Environment(
+    account=os.environ.get('CDK_DEFAULT_ACCOUNT'),
+    region=os.environ.get('CDK_DEFAULT_REGION')
+)
 
 app = core.App()
-s3_stack = S3Stack(app, "CdkStack")
+s3_stack = S3Stack(app, "CdkStack", env=environment)
 dns_stack = DnsStack(app,
                      'DNSStack',
                      frontendBucket=core.Fn.import_value('frontend-bucket'),
-                     env=core.Environment(
-                        account=os.environ["CDK_DEFAULT_ACCOUNT"],
-                        region=os.environ["CDK_DEFAULT_REGION"])
+                     env=environment
                      )
+
+dynamodb_stack = DynamodbStack(app, 'dynamodbStack', env=environment)
+
+
+lambda_stack = LambdaStack(app,
+                           'LambdaStack',
+                            frontendBucket=core.Fn.import_value('frontend-bucket'),
+                            conversations_table=dynamodb_stack.chat_conversations_table,
+                            messages_table=dynamodb_stack.chat_messages_table,
+                           env=environment
+                           )
+
 app.synth()
