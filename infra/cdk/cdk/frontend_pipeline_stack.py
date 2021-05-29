@@ -60,11 +60,6 @@ class CodePipelineFrontendStack(core.Stack):
                                                            # 'aws cloudfront create-invalidation --distribution-id $distributionid --paths "/*" '
                                                        ]
                                                    }
-                                               },
-                                               'artifacts': {
-                                                   'files': [
-                                                       'build/**/*'
-                                                   ]
                                                }
                                            })
                                            )
