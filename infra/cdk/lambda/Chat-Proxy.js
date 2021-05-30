@@ -19,7 +19,7 @@ exports.handler = function (event, context, callback) {
 
     var path = event.pathParameters.proxy;
 
-    if (path === 'conversations') {
+    if (path === 'conversations' && event.httpMethod === 'GET') {
         dynamo.query({
             TableName: 'Chat-Conversations',
             IndexName: 'secondary_index',

@@ -7,6 +7,7 @@ from cdk.DNS_stack import DnsStack
 from cdk.lambda_stack import LambdaStack
 from cdk.dynamodb_stack import DynamodbStack
 from cdk.frontend_pipeline_stack import CodePipelineFrontendStack
+from cdk.ApiGateway_stack import ApiCorsLambdaStack
 
 environment = core.Environment(
     account=os.environ.get('CDK_DEFAULT_ACCOUNT'),
@@ -37,5 +38,10 @@ frontend_pipeline = CodePipelineFrontendStack(app,
                                               webhostingbucket=core.Fn.import_value('frontend-bucket'),
                                               env=environment
                                               )
+
+apiGateway = ApiCorsLambdaStack(app,
+                                'ApigatewayStack',
+                                conversations_lambda=lambda_stack.lb_conversations_get ,
+                                env=environment)
 
 app.synth()

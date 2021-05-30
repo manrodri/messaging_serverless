@@ -27,15 +27,39 @@ class LambdaStack(core.Stack):
                                       handler='Chat-Proxy.handler'
                                       )
 
-        api_gateway = apigw.LambdaRestApi(self, 'chat-api',
-                                          handler=lambda_function,
-                                          rest_api_name='chat-api',
-                                          default_cors_preflight_options={
-                                              "allow_origins": apigw.Cors.ALL_ORIGINS,
-                                              "allow_methods": apigw.Cors.ALL_ORIGINS,
-                                          }
-                                          )
+        self.lb_conversations_get = lb.Function(
+            self,
+            'lambda-conversations-get',
+            runtime=lb.Runtime.NODEJS_12_X,
+            code=lb.Code.asset('./lambda/conversations-get'),
+            handler='Chat-Conversations-Get.handler'
 
-        webhostingbucket.grant_read(lambda_function)
+        )
+
+        self.lb_messages_get = lb.Function(
+            self,
+            'lambda-messages-get',
+            runtime=lb.Runtime.NODEJS_12_X,
+            code=lb.Code.asset('./lambda/messages-get'),
+            handler='Chat-Messages-Get.handler'
+        )
+
+        self.lb_messages_post = lb.Function(
+            self,
+            'lambda-messages-post',
+            code=lb.Code.asset('./lambda/messages-post'),
+            handler='Chat-Messages-Post.handler',
+            runtime=lb.Runtime.NODEJS_12_X
+        )
+
+        conversations_table.grant(self.lb_messages_post, "dynamodb:*")
+        messages_table.grant(self.lb_messages_post, "dynamodb:*")
+
+        conversations_table.grant(self.lb_messages_get, "dynamodb:*")
+        messages_table.grant(self.lb_messages_get, "dynamodb:*")
+
+        conversations_table.grant(self.lb_conversations_get, "dynamodb:*")
+        messages_table.grant(self.lb_conversations_get, "dynamodb:*")
+
         conversations_table.grant(lambda_function, "dynamodb:*")
         messages_table.grant(lambda_function, "dynamodb:*")
