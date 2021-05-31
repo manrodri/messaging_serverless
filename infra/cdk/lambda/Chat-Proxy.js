@@ -25,7 +25,7 @@ exports.handler = function (event, context, callback) {
             IndexName: 'secondary_index',
             Select: 'ALL_PROJECTED_ATTRIBUTES',
             KeyConditionExpression: 'Username = :username',
-            ExpressionAttributeValues: {':username': {S: 'Student'}}
+            ExpressionAttributeValues: {':username': {S: event.cognitoUsername}}
         }, function (err, data) {
             handleIdQuery(err, data, done, [], 'Student');
         });
