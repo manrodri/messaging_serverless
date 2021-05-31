@@ -3,6 +3,7 @@ attrs==20.3.0
 autopep8==1.5.7
 aws-cdk.assets==1.106.1
 aws-cdk.aws-apigateway==1.106.1
+aws-cdk.aws-apigatewayv2==1.106.1
 aws-cdk.aws-applicationautoscaling==1.106.1
 aws-cdk.aws-autoscaling==1.106.1
 aws-cdk.aws-autoscaling-common==1.106.1
