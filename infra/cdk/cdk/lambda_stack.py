@@ -71,6 +71,14 @@ class LambdaStack(core.Stack):
             }
         )
 
+        self.lb_conversations_post = lb.Function(
+            self,
+            'lambda-conversation-post',
+            runtime=lb.Runtime.NODEJS_12_X,
+            code=lb.Code.asset("./lambda/conversations-post"),
+            handler="Chat-Conversation-Post.handler"
+        )
+
         cognito_arn = cognito_user_pool.user_pool_arn
         cognito_statement = iam.PolicyStatement()
         cognito_statement.add_resources(cognito_arn)
@@ -89,4 +97,8 @@ class LambdaStack(core.Stack):
         conversations_table.grant(lambda_function, "dynamodb:*")
         messages_table.grant(lambda_function, "dynamodb:*")
 
+        conversations_table.grant_full_access(self.lb_conversations_post)
+        messages_table.grant_full_access(self.lb_conversations_post)
+
         self.lb_user_get.role.add_to_policy(cognito_statement)
+        # self.lb_conversations_post.role.add_to_policy(cognito_statement)

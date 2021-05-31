@@ -1,0 +1,14 @@
+{
+  "name": "conversations-post",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Chat-Conversation-Post.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "uuidv4": "^6.2.8"
+  }
+}
