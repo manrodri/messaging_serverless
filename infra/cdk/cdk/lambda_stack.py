@@ -44,6 +44,12 @@ class LambdaStack(core.Stack):
 
         )
 
+        version1_conversation_get = lb.Version(
+            self,
+            "version1converstaionget",
+            lambda_=self.lb_conversations_get
+        )
+
         self.lb_messages_get = lb.Function(
             self,
             'lambda-messages-get',
@@ -52,12 +58,24 @@ class LambdaStack(core.Stack):
             handler='Chat-Messages-Get.handler'
         )
 
+        version1_messages_get = lb.Version(
+            self,
+            "version1messagesget",
+            lambda_=self.lb_messages_get
+        )
+
         self.lb_messages_post = lb.Function(
             self,
             'lambda-messages-post',
             code=lb.Code.asset('./lambda/messages-post'),
             handler='Chat-Messages-Post.handler',
             runtime=lb.Runtime.NODEJS_12_X
+        )
+
+        version1_messages_post = lb.Version(
+            self,
+            "version1messagetspost",
+            lambda_=self.lb_messages_post
         )
 
         self.lb_user_get = lb.Function(
@@ -71,12 +89,24 @@ class LambdaStack(core.Stack):
             }
         )
 
+        version1_user_get = lb.Version(
+            self,
+            "version1userget",
+            lambda_=self.lb_user_get
+        )
+
         self.lb_conversations_post = lb.Function(
             self,
             'lambda-conversation-post',
             runtime=lb.Runtime.NODEJS_12_X,
             code=lb.Code.asset("./lambda/conversations-post"),
             handler="Chat-Conversation-Post.handler"
+        )
+
+        version1_conversation_post = lb.Version(
+            self,
+            "version1converstaionpost",
+            lambda_=self.lb_conversations_post
         )
 
         cognito_arn = cognito_user_pool.user_pool_arn

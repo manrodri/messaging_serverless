@@ -2,6 +2,7 @@
 import os
 from aws_cdk import core
 
+from cdk.CloudFront_stack import CdnStack
 from cdk.s3_stack import S3Stack
 from cdk.DNS_stack import DnsStack
 from cdk.lambda_stack import LambdaStack
@@ -9,10 +10,10 @@ from cdk.dynamodb_stack import DynamodbStack
 from cdk.frontend_pipeline_stack import CodePipelineFrontendStack
 from cdk.ApiGateway_stack import ApiCorsLambdaStack
 
-environment = core.Environment(
-    account=os.environ.get('CDK_DEFAULT_ACCOUNT'),
-    region=os.environ.get('CDK_DEFAULT_REGION')
-)
+environment = {
+    "region": 'eu-west-1',
+    'account': '423754860743'
+}
 
 app = core.App()
 s3_stack = S3Stack(app, "CdkStack", env=environment)
@@ -23,6 +24,13 @@ dns_stack = DnsStack(app,
                      )
 
 dynamodb_stack = DynamodbStack(app, 'dynamodbStack', env=environment)
+
+cdn_stack = CdnStack(
+    app,
+    'cdnStack',
+    frontendBucket=core.Fn.import_value('frontend-bucket'),
+    env=environment
+)
 
 
 lambda_stack = LambdaStack(app,

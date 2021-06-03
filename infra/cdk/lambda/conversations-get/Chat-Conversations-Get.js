@@ -4,6 +4,8 @@ var AWS = require('aws-sdk');
 
 var dynamo = new AWS.DynamoDB();
 
+
+
 exports.handler = function (event, context, callback) {
     dynamo.query({
         TableName: 'Chat-Conversations',
