@@ -17,6 +17,9 @@ class S3Stack(cdk.Stack):
                                      removal_policy=cdk.RemovalPolicy.DESTROY,
                                      website_index_document='index.html'
                                      )
+
+
+        testBucket = s3.Bucket(self, 'testBucket')
         cdk.CfnOutput(self, 'frontend-bucket-export',
                        value=artifacts_bucket.bucket_name,
                        export_name='frontend-bucket')
