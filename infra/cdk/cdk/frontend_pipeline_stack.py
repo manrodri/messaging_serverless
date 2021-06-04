@@ -5,6 +5,7 @@ from aws_cdk import (
     aws_codebuild as cb,
     aws_s3 as s3,
     aws_iam as iam,
+    aws_ssm as ssm,
     core
 )
 
@@ -19,6 +20,8 @@ class CodePipelineFrontendStack(core.Stack):
 
         webhosting_bucket = s3.Bucket.from_bucket_name(self, 'webhosting-id', bucket_name=webhostingbucket)
 
+        cdn_id = ssm.StringParameter.from_string_parameter_name(self, 'cdnid',
+                                                                string_parameter_name='/' + env_name + '/app-distribution-id')
         source_repo = ccm.Repository.from_repository_name(self,
                                                           'repoid',
                                                           repository_name='messaging_serverless',
@@ -37,6 +40,9 @@ class CodePipelineFrontendStack(core.Stack):
                                                environment_variables={
                                                    'HOSTING_BUCKET': cb.BuildEnvironmentVariable(
                                                        value=webhosting_bucket.bucket_name
+                                                   ),
+                                                   'DISTRIBUTION_ID': cb.BuildEnvironmentVariable(
+                                                       value=cdn_id.string_value
                                                    )
                                                }
                                            ),
@@ -56,8 +62,7 @@ class CodePipelineFrontendStack(core.Stack):
                                                    },
                                                    'post_build': {
                                                        'commands': [
-                                                           "echo post build stage boom!"
-                                                           # 'aws cloudfront create-invalidation --distribution-id $distributionid --paths "/*" '
+                                                           'aws cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths "/*" '
                                                        ]
                                                    }
                                                }
