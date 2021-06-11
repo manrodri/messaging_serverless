@@ -10,6 +10,8 @@ from cdk.dynamodb_stack import DynamodbStack
 from cdk.frontend_pipeline_stack import CodePipelineFrontendStack
 from cdk.ApiGateway_stack import ApiCorsLambdaStack
 from cdk.acm_stack import ACMStack
+from cdk.ApiLambdaIntegration_stack import ApiLambdaStack
+
 
 environment = {
     "region": 'eu-west-1',
@@ -41,7 +43,8 @@ dynamodb_stack = DynamodbStack(app, 'dynamodbStack', env=environment)
 
 lambda_stack = LambdaStack(app,
                            'LambdaStack',
-                           frontendBucket=core.Fn.import_value('frontend-bucket'),
+                           frontendBucket=core.Fn.import_value(
+                               'frontend-bucket'),
                            conversations_table=dynamodb_stack.chat_conversations_table,
                            messages_table=dynamodb_stack.chat_messages_table,
                            env=environment
@@ -49,7 +52,8 @@ lambda_stack = LambdaStack(app,
 
 frontend_pipeline = CodePipelineFrontendStack(app,
                                               'FrontendPipelineStack',
-                                              webhostingbucket=core.Fn.import_value('frontend-bucket'),
+                                              webhostingbucket=core.Fn.import_value(
+                                                  'frontend-bucket'),
                                               env=environment
                                               )
 
@@ -57,5 +61,11 @@ apiGateway = ApiCorsLambdaStack(app,
                                 'ApigatewayStack',
                                 conversations_lambda=lambda_stack.lb_conversations_get,
                                 env=environment)
+
+apiLambdaIntegration = ApiLambdaStack(
+    app,
+    'apigwIntegration',
+    env=environment
+)
 
 app.synth()

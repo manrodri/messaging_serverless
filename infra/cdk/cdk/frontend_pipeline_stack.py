@@ -46,7 +46,6 @@ class CodePipelineFrontendStack(core.Stack):
                                                    )
                                                }
                                            ),
-                                           cache=cb.Cache.bucket(bucket=artifact_bucket, prefix='codebuild-cache'),
                                            build_spec=cb.BuildSpec.from_object({
                                                'version': '0.2',
                                                'phases': {

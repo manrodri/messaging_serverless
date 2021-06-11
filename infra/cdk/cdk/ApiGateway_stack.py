@@ -7,42 +7,24 @@ from aws_cdk import (
 
 class ApiCorsLambdaStack(core.Stack):
 
-    def __init__(self, scope: core.Construct, id: str, conversations_lambda:_lambda.Function, **kwargs) -> None:
+    def __init__(self, scope: core.Construct, id: str, conversations_lambda: _lambda.Function, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
-
-        base_lambda = _lambda.Function(self, 'ApiCorsLambda',
-                                       handler='lambda-handler.handler',
-                                       runtime=_lambda.Runtime.PYTHON_3_7,
-                                       code=_lambda.Code.asset('lambda'),
-                                       )
-
 
         base_api = _apigw.RestApi(self, 'ApiGatewayWithCors',
                                   rest_api_name='ApiGatewayWithCors')
 
         example_entity = base_api.root.add_resource('conversations')
-        example_entity_lambda_integration = _apigw.LambdaIntegration(conversations_lambda, proxy=False,
+        example_entity_lambda_integration = _apigw.LambdaIntegration(
+            conversations_lambda, proxy=False,
+        )
 
-        # example_entity_lambda_integration = _apigw.LambdaIntegration(conversations_lambda, proxy=False, integration_responses=[
-        #     {
-        #         'statusCode': '200',
-        #         'responseParameters': {
-        #             'method.response.header.Access-Control-Allow-Origin': "'*'",
-        #         }
-        #     }
-        # ]
-                                                                     )
-        # example_entity.add_method('GET', example_entity_lambda_integration,
-        #                           method_responses=[{
-        #                               'statusCode': '200',
-        #                               'responseParameters': {
-        #                                   'method.response.header.Access-Control-Allow-Origin': True,
-        #                               }
-        #                           }
-        #                           ]
-        #                           )
+        example_entity.add_method('GET', example_entity_lambda_integration,
+        
+                                  method_responses=[
+                                      _apigw.MethodResponse(status_code="200"),
+                                      _apigw.MethodResponse(status_code="204")],
 
-        example_entity.add_method('GET', example_entity_lambda_integration)
+                                  )
 
         # self.add_cors_options(example_entity)
 
@@ -60,13 +42,13 @@ class ApiCorsLambdaStack(core.Stack):
             passthrough_behavior=_apigw.PassthroughBehavior.WHEN_NO_MATCH,
             request_templates={"application/json": "{\"statusCode\":200}"}
         ),
-                                  method_responses=[{
-                                      'statusCode': '200',
-                                      'responseParameters': {
-                                          'method.response.header.Access-Control-Allow-Headers': True,
-                                          'method.response.header.Access-Control-Allow-Methods': True,
-                                          'method.response.header.Access-Control-Allow-Origin': True,
-                                      }
-                                  }
-                                  ],
-                                  )
+            method_responses=[{
+                'statusCode': '200',
+                'responseParameters': {
+                    'method.response.header.Access-Control-Allow-Headers': True,
+                    'method.response.header.Access-Control-Allow-Methods': True,
+                    'method.response.header.Access-Control-Allow-Origin': True,
+                }
+            }
+        ],
+        )

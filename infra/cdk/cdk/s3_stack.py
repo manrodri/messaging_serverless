@@ -19,5 +19,5 @@ class S3Stack(cdk.Stack):
                                      )
 
         cdk.CfnOutput(self, 'frontend-bucket-export',
-                       value=artifacts_bucket.bucket_name,
-                       export_name='frontend-bucket')
+                      value=artifacts_bucket.bucket_name,
+                      export_name='frontend-bucket')
