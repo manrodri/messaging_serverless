@@ -5,7 +5,7 @@ phases:
      - pip install awscli
   build:
     commands:
-     - aws s3 sync ./lib/Site/s3://${HOSTING_BUCKET}
+     - aws s3 sync ./lib/Site/ s3://${HOSTING_BUCKET}
   post_build:
     commands:
       - echo "post build actions here"
