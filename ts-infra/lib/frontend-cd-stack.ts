@@ -23,7 +23,7 @@ export class CodeBuildFrontend extends cdk.Stack {
                 buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
                 environmentVariables: {
                   HOSTING_BUCKET: {
-                      value: frontendBucket,
+                      value: frontendBucket.bucketName,
                       type: codebuild.BuildEnvironmentVariableType.PLAINTEXT
                   }
                 }

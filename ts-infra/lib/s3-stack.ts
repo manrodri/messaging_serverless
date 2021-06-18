@@ -10,7 +10,7 @@ export class S3Stack extends cdk.Stack {
 
     // The code that defines your stack goes here
     const bucket = new Bucket(this, 'frontendBucket', {
-      bucketName:"ts.soydecai.xyz",
+      bucketName:"messages.soydecai.xyz",
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       accessControl: s3.BucketAccessControl.BUCKET_OWNER_FULL_CONTROL,
       websiteIndexDocument:'index.html',
