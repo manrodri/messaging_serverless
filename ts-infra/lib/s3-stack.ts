@@ -5,6 +5,7 @@ import {CfnOutput} from "@aws-cdk/core"
 
 
 export class S3Stack extends cdk.Stack {
+    bucket: Bucket;
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
@@ -16,6 +17,8 @@ export class S3Stack extends cdk.Stack {
       websiteIndexDocument:'index.html',
       publicReadAccess: true
     })
+
+      this.bucket = bucket;
 
     new CfnOutput(
         this,
