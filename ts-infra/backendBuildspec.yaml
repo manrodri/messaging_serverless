@@ -3,7 +3,7 @@ phases:
 
   install:
     commands:
-     - cd infra
+     - cd ts-infra
      - npm ci
   pre_build:
     commands:
