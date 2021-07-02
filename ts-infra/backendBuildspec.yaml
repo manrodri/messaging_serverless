@@ -11,4 +11,4 @@ phases:
 
   build:
     commands:
-      - cdk -a deploy backendStack --require-approval=never --verbose
+      - cdk deploy backendStack --require-approval=never --verbose
