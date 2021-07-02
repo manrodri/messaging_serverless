@@ -96,13 +96,14 @@ export class messagingAppPipelineStack extends Stack {
                     actions: [sourceAction]
                 },
                 {
+                    stageName: 'backend',
+                    actions: [backendAction]
+                },
+                {
                     stageName: 'frontend',
                     actions: [frontendAction]
                 },
-                {
-                    stageName: 'backend',
-                    actions: [backendAction]
-                }
+
             ]
 
         })
