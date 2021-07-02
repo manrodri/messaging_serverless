@@ -1,6 +1,5 @@
 import * as cdk from "@aws-cdk/core"
 import * as codebuild from '@aws-cdk/aws-codebuild';
-import * as codecommit from '@aws-cdk/aws-codecommit';
 import * as iam from "@aws-cdk/aws-iam"
 import {BuildSpec} from "@aws-cdk/aws-codebuild";
 import * as s3 from "@aws-cdk/aws-s3"
@@ -28,7 +27,7 @@ export class CodeBuildFrontend extends cdk.Stack {
         const buildProject = new codebuild.Project(this, 'MyFirstCodeCommitProject', {
             source: gitHubSource,
             buildSpec: BuildSpec.fromSourceFilename("ts-infra/buildspec.yaml"),
-            projectName: "frontendCodeBuildJob",
+            projectName: "messagingAppFrontendJob",
             environment: {
                 buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
                 environmentVariables: {
@@ -41,6 +40,8 @@ export class CodeBuildFrontend extends cdk.Stack {
         });
 
         buildProject.role?.addToPolicy(new iam.PolicyStatement({actions: ["s3:*"], resources: ["*"]}))
+
+
 
 
     }

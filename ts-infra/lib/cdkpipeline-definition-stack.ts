@@ -1,19 +1,24 @@
 import * as codepipeline from '@aws-cdk/aws-codepipeline';
 import * as codepipeline_actions from '@aws-cdk/aws-codepipeline-actions';
-import {Construct, SecretValue, Stack, StackProps} from '@aws-cdk/core';
-import {CdkPipeline, SimpleSynthAction} from "@aws-cdk/pipelines";
-import * as cdk from "@aws-cdk/core";
+import * as cdk from '@aws-cdk/core';
+import {Construct, Stack, StackProps} from '@aws-cdk/core';
+import * as codebuild from '@aws-cdk/aws-codebuild';
+import {BuildSpec} from '@aws-cdk/aws-codebuild';
+import * as iam from "@aws-cdk/aws-iam"
+import * as s3 from "@aws-cdk/aws-s3"
+
 
 /**
  * The stack that defines the application pipeline
  */
-export class CdkpipelinesDemoPipelineStack extends Stack {
-    constructor(scope: Construct, id: string, props?: StackProps) {
+export class messagingAppPipelineStack extends Stack {
+    constructor(scope: Construct, id: string, bucket: string, props?: StackProps) {
         super(scope, id, props);
 
         // artifacts buckets
         const sourceArtifact = new codepipeline.Artifact();
-        const cloudAssemblyArtifact = new codepipeline.Artifact();
+        const frontendArtifact = new codepipeline.Artifact();
+        const backendArtifact = new codepipeline.Artifact();
 
         // source action
         const gitHubToken = cdk.SecretValue.secretsManager('remoteRepositorieKeys', {
@@ -21,32 +26,88 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
         })
 
         const sourceAction = new codepipeline_actions.GitHubSourceAction({
-                actionName: 'GitHub',
-                output: sourceArtifact,
-                oauthToken: gitHubToken,
-                owner: 'manrodri',
-                repo: 'messaging_serverless',
-                branch: 'ts'
-            })
+            actionName: 'GitHub',
+            output: sourceArtifact,
+            oauthToken: gitHubToken,
+            owner: 'manrodri',
+            repo: 'messaging_serverless',
+            branch: 'ts'
+        })
 
-        // pipeline
-        const pipeline = new CdkPipeline(this, 'Pipeline', {
-            pipelineName: 'MyServicePipeline',
-            cloudAssemblyArtifact,
-            sourceAction: sourceAction,
 
-            // How it will be built and synthesized
-            synthAction: SimpleSynthAction.standardNpmSynth({
-                sourceArtifact,
-                cloudAssemblyArtifact,
-
-                // We need a build step to compile the TypeScript Lambda
-                // buildCommand: 'npm run build'
-                synthCommand: "cdk synth"
-            }),
+        // frontend stage
+        const frontendBucket = s3.Bucket.fromBucketName(this, 'bucket', bucket)
+        const frontendProject = new codebuild.PipelineProject(this, 'MyProject',{
+            buildSpec: BuildSpec.fromSourceFilename("ts-infra/buildspec.yaml"),
+            environment: {
+                buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
+                environmentVariables: {
+                    HOSTING_BUCKET: {
+                        value: frontendBucket.bucketName,
+                        type: codebuild.BuildEnvironmentVariableType.PLAINTEXT
+                    }
+                }
+            }
         });
 
-        // This is where we add the application stages
-        // ...
+
+        frontendProject.role?.addToPolicy(new iam.PolicyStatement({actions: ["s3:*"], resources: ["*"]}))
+
+        const frontendAction = new codepipeline_actions.CodeBuildAction({
+            actionName: 'CodeBuild',
+            project: frontendProject,
+            input: sourceArtifact,
+            outputs: [frontendArtifact] // optional
+        });
+
+
+
+
+        // backend stage
+        // frontend stage
+        const backendProject = new codebuild.PipelineProject(this, 'backendProject',{
+            buildSpec: BuildSpec.fromSourceFilename("ts-infra/backendBuildspec.yaml"),
+            environment: {
+                buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
+                environmentVariables: {
+                    HOSTING_BUCKET: {
+                        value: frontendBucket.bucketName,
+                        type: codebuild.BuildEnvironmentVariableType.PLAINTEXT
+                    }
+                }
+            }
+        });
+        backendProject.role?.addToPolicy(new iam.PolicyStatement({actions: ["*"], resources: ["*"]}))
+
+        const backendAction = new codepipeline_actions.CodeBuildAction({
+            actionName: 'CodeBuild',
+            project: backendProject,
+            input: sourceArtifact,
+            outputs: [backendArtifact] // optional
+        });
+
+        // pipeline
+        const pipeline = new codepipeline.Pipeline(this, 'messagingAppPipeline', {
+            pipelineName: "messagingAppPipeline",
+            crossAccountKeys: false,
+            stages: [
+                {
+                    stageName: "source",
+                    actions: [sourceAction]
+                },
+                {
+                    stageName: 'frontend',
+                    actions: [frontendAction]
+                },
+                {
+                    stageName: 'backend',
+                    actions: [backendAction]
+                }
+            ]
+
+        })
+
+
+
     }
 }

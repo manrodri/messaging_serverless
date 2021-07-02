@@ -1,0 +1,14 @@
+version: 0.2
+phases:
+
+  install:
+    commands:
+     - npm ci
+  pre_build:
+    commands:
+     - cd infra
+     - npm install -g aws-cdk
+
+  build:
+    commands:
+      - cdk -a deploy backendStack --require-approval=never --verbose

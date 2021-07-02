@@ -28,6 +28,14 @@ export class S3Stack extends cdk.Stack {
           exportName: "frontendBucket"
         }
     )
+      new CfnOutput(
+        this,
+        'frontEndBucketUrl',
+        {
+          value: bucket.bucketWebsiteUrl,
+          exportName: "frontendBucketUrl"
+        }
+    )
 
   }
 }

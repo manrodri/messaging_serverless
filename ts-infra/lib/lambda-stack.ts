@@ -4,9 +4,12 @@ import {Bucket} from "@aws-cdk/aws-s3";
 import * as path from "path";
 import * as iam from '@aws-cdk/aws-iam'
 import * as apigateway from "@aws-cdk/aws-apigateway"
+import {addCorsOptions} from "./enableCors";
+
 
 export class LambdaStack extends cdk.Stack {
     UrlOutput: cdk.CfnOutput;
+
     constructor(scope: cdk.Construct, id: string, bucket: string, props?: cdk.StackProps) {
         super(scope, id, props);
 
@@ -27,21 +30,29 @@ export class LambdaStack extends cdk.Stack {
             "mypolicy",
             'arn:aws:iam::aws:policy/AmazonS3FullAccess'))
 
+        const alias = new lambda.Alias(this, 'x', {
+            aliasName: 'Current',
+            version: fn.currentVersion
+        });
+
         const api = new apigateway.RestApi(
             this,
-            'myapi',
+            'chats',
             {}
         );
 
         // integrations
         const getConversationHandler =
-            new apigateway.LambdaIntegration(fn.currentVersion);
+            new apigateway.LambdaIntegration(alias);
 
         // resources and methods
         const conversations = api.root.addResource('conversations');
+        addCorsOptions(conversations);
         conversations.addMethod('GET', getConversationHandler);
         conversations.addMethod('POST');
+
         const conversation = conversations.addResource('{conversation_id}');
+        addCorsOptions(conversation)
         conversation.addMethod("GET");
         conversation.addMethod("POST");
 
