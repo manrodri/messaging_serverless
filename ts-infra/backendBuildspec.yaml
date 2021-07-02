@@ -3,10 +3,10 @@ phases:
 
   install:
     commands:
+     - cd infra
      - npm ci
   pre_build:
     commands:
-     - cd infra
      - npm install -g aws-cdk
 
   build:
