@@ -7,11 +7,14 @@ import * as apigateway from "@aws-cdk/aws-apigateway"
 import {addCorsOptions} from "./enableCors";
 
 
+
 export class LambdaStack extends cdk.Stack {
     UrlOutput: cdk.CfnOutput;
 
     constructor(scope: cdk.Construct, id: string, bucket: string, props?: cdk.StackProps) {
         super(scope, id, props);
+
+        cdk.Tags.of(this).add('environment', process.env.SDLC_ENVIRONMENT || 'dev');
 
         const frontendBucket = Bucket.fromBucketName(this, 'bucket', bucket)
 
