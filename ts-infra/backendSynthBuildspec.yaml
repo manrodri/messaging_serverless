@@ -17,5 +17,5 @@ phases:
 #      - cdk deploy backendStack --require-approval=never --verbose
 
 artifacts:
-  base-directory: cdk.out
+  base-directory: ts-infra/cdk.out
   files: "**/*"
