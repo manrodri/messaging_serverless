@@ -8,5 +8,6 @@ phases:
 
   build:
     commands:
+      - ls
       - cdk -a . deploy S3Stack --require-approval=never --verbose
       - cdk -a . deploy backendStack --require-approval=never --verbose
