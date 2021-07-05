@@ -4,10 +4,16 @@ phases:
   install:
     commands:
      - cd ts-infra
+     - npm install
+     - echo "Install testing framework here"
+  pre_build:
+    commands:
      - npm install -g aws-cdk
 
   build:
     commands:
-      - ls
-      - cdk -a . deploy S3Stack --require-approval=never --verbose
-      - cdk -a . deploy backendStack --require-approval=never --verbose
+      - cdk deploy S3Stack --require-approval=never --verbose
+      - cdk deploy backendStack --require-approval=never --verbose
+
+artifacts:
+  files: "**/*"
