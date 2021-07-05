@@ -16,6 +16,3 @@ phases:
 #      - cdk deploy S3Stack --require-approval=never --verbose
 #      - cdk deploy backendStack --require-approval=never --verbose
 
-artifacts:
-  base-directory: ts-infra/cdk.out
-  files: "**/*"
