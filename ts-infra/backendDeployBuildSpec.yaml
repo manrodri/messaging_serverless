@@ -1,0 +1,12 @@
+version: 0.2
+phases:
+
+  install:
+    commands:
+     - cd ts-infra
+     - npm install -g aws-cdk
+
+  build:
+    commands:
+      - cdk -a . deploy S3Stack --require-approval=never --verbose
+      - cdk -a . deploy backendStack --require-approval=never --verbose

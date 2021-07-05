@@ -1,0 +1,1230 @@
+{
+    "version": "12.0.0",
+    "artifacts": {
+        "Tree": {
+            "type": "cdk:tree",
+            "properties": {
+                "file": "tree.json"
+            }
+        },
+        "S3Stack": {
+            "type": "aws:cloudformation:stack",
+            "environment": "aws://423754860743/eu-west-1",
+            "properties": {
+                "templateFile": "S3Stack.template.json",
+                "validateOnSynth": false
+            },
+            "metadata": {
+                "/S3Stack/frontendBucket/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "frontendBucketBD2F2980",
+                        "trace": [
+                            "new Bucket (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:710:22)",
+                            "new S3Stack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/s3-stack.ts:12:20)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:14:1)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/S3Stack/frontendBucket/Policy/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "frontendBucketPolicyB689D88E",
+                        "trace": [
+                            "new BucketPolicy (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-s3/lib/bucket-policy.ts:30:21)",
+                            "Bucket.addToResourcePolicy (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:238:21)",
+                            "Function.addToPrincipalOrResource (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/grant.ts:76:45)",
+                            "Bucket.grantPublicAccess (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:339:22)",
+                            "new Bucket (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:773:12)",
+                            "new S3Stack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/s3-stack.ts:12:20)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:14:1)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/S3Stack/frontEndBucket": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "frontEndBucket",
+                        "trace": [
+                            "new S3Stack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/s3-stack.ts:20:5)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:14:1)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/S3Stack/CDKMetadata/Default": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "CDKMetadata",
+                        "trace": [
+                            "new MetadataResource (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:22:24)",
+                            "/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:140:5",
+                            "visit (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:202:5)",
+                            "visit (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:198:5)",
+                            "injectMetadataResources (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:131:3)",
+                            "Object.synthesize (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+                            "App.synth (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stage.ts:94:23)",
+                            "process.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/app.ts:62:45)",
+                            "Object.onceWrapper (events.js:483:26)",
+                            "process.emit (events.js:376:20)",
+                            "process.emit (domain.js:470:12)",
+                            "process.emit (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/source-map-support/source-map-support.js:495:21)"
+                        ]
+                    }
+                ]
+            },
+            "displayName": "S3Stack"
+        },
+        "FrontendJob": {
+            "type": "aws:cloudformation:stack",
+            "environment": "aws://423754860743/eu-west-1",
+            "properties": {
+                "templateFile": "FrontendJob.template.json",
+                "validateOnSynth": false
+            },
+            "metadata": {
+                "/FrontendJob/MyFirstCodeCommitProject/Role/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "MyFirstCodeCommitProjectRole11CE03E3",
+                        "trace": [
+                            "new Role (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/role.ts:192:18)",
+                            "new Project (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codebuild/lib/project.ts:629:31)",
+                            "new CodeBuildFrontend (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/frontend-cd-stack.ts:28:30)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:15:1)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/FrontendJob/MyFirstCodeCommitProject/Role/DefaultPolicy/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "MyFirstCodeCommitProjectRoleDefaultPolicyDEB7854D",
+                        "trace": [
+                            "new Policy (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/policy.ts:89:22)",
+                            "Role.addToPrincipalPolicy (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/role.ts:229:28)",
+                            "Project.addToRolePolicy (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codebuild/lib/project.ts:158:17)",
+                            "new Project (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codebuild/lib/project.ts:728:10)",
+                            "new CodeBuildFrontend (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/frontend-cd-stack.ts:28:30)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:15:1)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/FrontendJob/MyFirstCodeCommitProject/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "MyFirstCodeCommitProject54CB950C",
+                        "trace": [
+                            "new Project (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codebuild/lib/project.ts:682:22)",
+                            "new CodeBuildFrontend (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/frontend-cd-stack.ts:28:30)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:15:1)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/FrontendJob/CDKMetadata/Default": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "CDKMetadata",
+                        "trace": [
+                            "new MetadataResource (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:22:24)",
+                            "/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:140:5",
+                            "visit (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:202:5)",
+                            "visit (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:198:5)",
+                            "injectMetadataResources (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:131:3)",
+                            "Object.synthesize (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+                            "App.synth (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stage.ts:94:23)",
+                            "process.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/app.ts:62:45)",
+                            "Object.onceWrapper (events.js:483:26)",
+                            "process.emit (events.js:376:20)",
+                            "process.emit (domain.js:470:12)",
+                            "process.emit (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/source-map-support/source-map-support.js:495:21)"
+                        ]
+                    }
+                ]
+            },
+            "displayName": "FrontendJob"
+        },
+        "backendStack": {
+            "type": "aws:cloudformation:stack",
+            "environment": "aws://423754860743/eu-west-1",
+            "properties": {
+                "templateFile": "backendStack.template.json",
+                "validateOnSynth": false
+            },
+            "metadata": {
+                "/backendStack": [
+                    {
+                        "type": "aws:cdk:asset",
+                        "data": {
+                            "path": "/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/.aws-sam/build/backendStack/MyFunction3BAA72D1",
+                            "id": "a239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67",
+                            "packaging": "zip",
+                            "sourceHash": "a239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67",
+                            "s3BucketParameter": "AssetParametersa239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67S3Bucket0F54C58F",
+                            "s3KeyParameter": "AssetParametersa239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67S3VersionKey076338CE",
+                            "artifactHashParameter": "AssetParametersa239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67ArtifactHash3C31BF2E"
+                        },
+                        "trace": [
+                            "ConstructNode.addMetadata (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/construct-compat.ts:252:92)",
+                            "LegacyStackSynthesizer.doAddFileAsset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:161:23)",
+                            "LegacyStackSynthesizer.addFileAsset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:66:19)",
+                            "LambdaStack.addFileAsset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stack.ts:350:29)",
+                            "LegacyStackSynthesizer.addFileAsset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:70:25)",
+                            "new Asset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:86:40)",
+                            "AssetCode.bind (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-lambda/lib/code.ts:180:20)",
+                            "new Function (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-lambda/lib/function.ts:327:29)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:14:20)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/MyFunction/ServiceRole/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "MyFunctionServiceRole3C357FF2",
+                        "trace": [
+                            "new Role (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/role.ts:192:18)",
+                            "new Function (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-lambda/lib/function.ts:307:31)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:14:20)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/MyFunction/ServiceRole/DefaultPolicy/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "MyFunctionServiceRoleDefaultPolicyB705ABD4",
+                        "trace": [
+                            "new Policy (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/policy.ts:89:22)",
+                            "Role.addToPrincipalPolicy (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/role.ts:229:28)",
+                            "Function.addToRolePolicy (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:146:15)",
+                            "Function.buildTracingConfig (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-lambda/lib/function.ts:668:10)",
+                            "new Function (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-lambda/lib/function.ts:391:27)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:14:20)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/MyFunction/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "MyFunction3BAA72D1",
+                        "trace": [
+                            "new Function (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-lambda/lib/function.ts:369:35)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:14:20)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/MyFunction/CurrentVersion/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "MyFunctionCurrentVersion197490AF5f1b40add132fda24d6f6119360c96ea",
+                        "trace": [
+                            "new Version (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-lambda/lib/lambda-version.ts:126:21)",
+                            "Function.get currentVersion [as currentVersion] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-lambda/lib/function.ts:144:28)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:38:49)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/AssetParameters/a239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67/S3Bucket": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "AssetParametersa239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67S3Bucket0F54C58F",
+                        "trace": [
+                            "new FileAssetParameters (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:16:32)",
+                            "LegacyStackSynthesizer.doAddFileAsset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",
+                            "LegacyStackSynthesizer.addFileAsset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:66:19)",
+                            "LambdaStack.addFileAsset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stack.ts:350:29)",
+                            "LegacyStackSynthesizer.addFileAsset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:70:25)",
+                            "new Asset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:86:40)",
+                            "AssetCode.bind (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-lambda/lib/code.ts:180:20)",
+                            "new Function (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-lambda/lib/function.ts:327:29)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:14:20)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/AssetParameters/a239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67/S3VersionKey": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "AssetParametersa239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67S3VersionKey076338CE",
+                        "trace": [
+                            "new FileAssetParameters (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:21:31)",
+                            "LegacyStackSynthesizer.doAddFileAsset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",
+                            "LegacyStackSynthesizer.addFileAsset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:66:19)",
+                            "LambdaStack.addFileAsset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stack.ts:350:29)",
+                            "LegacyStackSynthesizer.addFileAsset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:70:25)",
+                            "new Asset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:86:40)",
+                            "AssetCode.bind (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-lambda/lib/code.ts:180:20)",
+                            "new Function (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-lambda/lib/function.ts:327:29)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:14:20)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/AssetParameters/a239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67/ArtifactHash": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "AssetParametersa239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67ArtifactHash3C31BF2E",
+                        "trace": [
+                            "new FileAssetParameters (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:26:34)",
+                            "LegacyStackSynthesizer.doAddFileAsset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",
+                            "LegacyStackSynthesizer.addFileAsset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:66:19)",
+                            "LambdaStack.addFileAsset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stack.ts:350:29)",
+                            "LegacyStackSynthesizer.addFileAsset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:70:25)",
+                            "new Asset (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:86:40)",
+                            "AssetCode.bind (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-lambda/lib/code.ts:180:20)",
+                            "new Function (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-lambda/lib/function.ts:327:29)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:14:20)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/myapi/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "myapi162F20B8",
+                        "trace": [
+                            "new RestApi (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:463:22)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:29:21)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/myapi/CloudWatchRole/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "myapiCloudWatchRoleEB425128",
+                        "trace": [
+                            "new Role (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/role.ts:192:18)",
+                            "RestApi._configureCloudWatchRole (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:289:18)",
+                            "new RestApi (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:481:12)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:29:21)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/myapi/Account": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "myapiAccountC3A4750C",
+                        "trace": [
+                            "RestApi._configureCloudWatchRole (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:294:22)",
+                            "new RestApi (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:481:12)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:29:21)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/myapi/Deployment/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "myapiDeploymentB7EF8EB7e3ddad8c028eaeea36d7201c89eb6a7b",
+                        "trace": [
+                            "new Deployment (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/deployment.ts:34:21)",
+                            "RestApi._configureDeployment (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:318:32)",
+                            "new RestApi (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:484:10)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:29:21)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/myapi/DeploymentStage.prod/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "myapiDeploymentStageprod329F21FF",
+                        "trace": [
+                            "new Stage (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/stage.ts:136:22)",
+                            "RestApi._configureDeployment (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:328:30)",
+                            "new RestApi (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:484:10)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:29:21)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/myapi/Endpoint": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "myapiEndpoint8EB17201",
+                        "trace": [
+                            "RestApi._configureDeployment (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:333:7)",
+                            "new RestApi (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:484:10)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:29:21)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/myapi/Default/conversations/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "myapiconversations2647A5C8",
+                        "trace": [
+                            "new Resource (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:342:22)",
+                            "RootResource.addResource (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:91:12)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:41:40)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/myapi/Default/conversations/GET/ApiPermission.backendStackmyapi292F8EF3.GET..conversations": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "myapiconversationsGETApiPermissionbackendStackmyapi292F8EF3GETconversationsD5109A41",
+                        "trace": [
+                            "Version.addPermission (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:130:5)",
+                            "LambdaIntegration.bind (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:41:18)",
+                            "new Method (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:98:36)",
+                            "Resource.addMethod (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:42:23)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/myapi/Default/conversations/GET/ApiPermission.Test.backendStackmyapi292F8EF3.GET..conversations": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "myapiconversationsGETApiPermissionTestbackendStackmyapi292F8EF3GETconversationsBB6EB793",
+                        "trace": [
+                            "Version.addPermission (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:130:5)",
+                            "LambdaIntegration.bind (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:49:20)",
+                            "new Method (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:98:36)",
+                            "Resource.addMethod (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:42:23)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/myapi/Default/conversations/GET/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "myapiconversationsGET95A8CE74",
+                        "trace": [
+                            "new Method (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:116:22)",
+                            "Resource.addMethod (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:42:23)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/myapi/Default/conversations/POST/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "myapiconversationsPOST37424CA2",
+                        "trace": [
+                            "new Method (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:116:22)",
+                            "Resource.addMethod (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:43:23)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/myapi/Default/conversations/{conversation_id}/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "myapiconversationsconversationid22170C2A",
+                        "trace": [
+                            "new Resource (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:342:22)",
+                            "Resource.addResource (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:91:12)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:44:44)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/myapi/Default/conversations/{conversation_id}/GET/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "myapiconversationsconversationidGET811D4DDD",
+                        "trace": [
+                            "new Method (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:116:22)",
+                            "Resource.addMethod (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:45:22)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/myapi/Default/conversations/{conversation_id}/POST/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "myapiconversationsconversationidPOST6F03CD77",
+                        "trace": [
+                            "new Method (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:116:22)",
+                            "Resource.addMethod (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
+                            "new LambdaStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/lambda-stack.ts:46:22)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:16:22)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendStack/CDKMetadata/Default": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "CDKMetadata",
+                        "trace": [
+                            "new MetadataResource (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:22:24)",
+                            "/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:140:5",
+                            "visit (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:202:5)",
+                            "visit (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:198:5)",
+                            "injectMetadataResources (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:131:3)",
+                            "Object.synthesize (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+                            "App.synth (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stage.ts:94:23)",
+                            "process.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/app.ts:62:45)",
+                            "Object.onceWrapper (events.js:483:26)",
+                            "process.emit (events.js:376:20)",
+                            "process.emit (domain.js:470:12)",
+                            "process.emit (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/source-map-support/source-map-support.js:495:21)"
+                        ]
+                    }
+                ]
+            },
+            "displayName": "backendStack"
+        },
+        "backendPipelineStack": {
+            "type": "aws:cloudformation:stack",
+            "environment": "aws://423754860743/eu-west-1",
+            "properties": {
+                "templateFile": "backendPipelineStack.template.json",
+                "validateOnSynth": false
+            },
+            "metadata": {
+                "/backendPipelineStack/BackendPipeline/ArtifactsBucket/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "BackendPipelineArtifactsBucket15951EDB",
+                        "trace": [
+                            "new Bucket (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:710:22)",
+                            "new Pipeline (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:246:21)",
+                            "new backendCpStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/backendCpStack.ts:10:26)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:17:1)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendPipelineStack/BackendPipeline/Role/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "BackendPipelineRole56E9109F",
+                        "trace": [
+                            "new Role (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/role.ts:192:18)",
+                            "new Pipeline (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:257:31)",
+                            "new backendCpStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/backendCpStack.ts:10:26)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:17:1)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendPipelineStack/BackendPipeline/Role/DefaultPolicy/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "BackendPipelineRoleDefaultPolicy452F286B",
+                        "trace": [
+                            "new Policy (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/policy.ts:89:22)",
+                            "Role.addToPrincipalPolicy (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/role.ts:229:28)",
+                            "Function.addToPrincipal (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/grant.ts:92:61)",
+                            "Function.addToPrincipalOrResource (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/grant.ts:48:26)",
+                            "Bucket.grant (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:379:27)",
+                            "Bucket.grantReadWrite (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:324:17)",
+                            "new Pipeline (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:273:25)",
+                            "new backendCpStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/backendCpStack.ts:10:26)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:17:1)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendPipelineStack/BackendPipeline/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "BackendPipelineEA75200E",
+                        "trace": [
+                            "new Pipeline (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:261:26)",
+                            "new backendCpStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/backendCpStack.ts:10:26)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:17:1)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendPipelineStack/BackendPipeline/Source/GitHub_Source/WebhookResource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "BackendPipelineSourceGitHubSourceWebhookResourceBA52FF0C",
+                        "trace": [
+                            "GitHubSourceAction.bound (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline-actions/lib/github/source-action.ts:89:7)",
+                            "GitHubSourceAction.bind (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/action.ts:234:17)",
+                            "RichAction.bind (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/private/rich-action.ts:30:24)",
+                            "Pipeline._attachActionToPipeline (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:362:37)",
+                            "Stage.attachActionToPipeline (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:141:27)",
+                            "Stage.addAction (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:91:29)",
+                            "new Stage (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:38:12)",
+                            "Pipeline.addStage (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:303:19)",
+                            "new backendCpStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/backendCpStack.ts:30:18)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:17:1)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendPipelineStack/BackendPipeline/Build/CodeBuild/CodePipelineActionRole/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "BackendPipelineBuildCodeBuildCodePipelineActionRole6F7DA3EE",
+                        "trace": [
+                            "new Role (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/role.ts:192:18)",
+                            "Pipeline.getRoleForAction (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:522:20)",
+                            "Pipeline._attachActionToPipeline (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:356:29)",
+                            "Stage.attachActionToPipeline (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:141:27)",
+                            "Stage.addAction (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:91:29)",
+                            "new Stage (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:38:12)",
+                            "Pipeline.addStage (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:303:19)",
+                            "new backendCpStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/backendCpStack.ts:45:18)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:17:1)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendPipelineStack/BackendPipeline/Build/CodeBuild/CodePipelineActionRole/DefaultPolicy/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "BackendPipelineBuildCodeBuildCodePipelineActionRoleDefaultPolicyB2DBDF7A",
+                        "trace": [
+                            "new Policy (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/policy.ts:89:22)",
+                            "Role.addToPrincipalPolicy (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/role.ts:229:28)",
+                            "Role.addToPolicy (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/role.ts:237:17)",
+                            "CodeBuildAction.bound (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline-actions/lib/codebuild/build-action.ts:87:18)",
+                            "CodeBuildAction.bind (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/action.ts:234:17)",
+                            "RichAction.bind (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/private/rich-action.ts:30:24)",
+                            "Pipeline._attachActionToPipeline (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:362:37)",
+                            "Stage.attachActionToPipeline (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:141:27)",
+                            "Stage.addAction (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:91:29)",
+                            "new Stage (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/private/stage.ts:38:12)",
+                            "Pipeline.addStage (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codepipeline/lib/pipeline.ts:303:19)",
+                            "new backendCpStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/backendCpStack.ts:45:18)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:17:1)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendPipelineStack/BuildBackendProject/Role/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "BuildBackendProjectRoleE47E6C90",
+                        "trace": [
+                            "new Role (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/role.ts:192:18)",
+                            "new Project (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codebuild/lib/project.ts:629:31)",
+                            "new PipelineProject (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codebuild/lib/pipeline-project.ts:12:5)",
+                            "new backendCpStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/backendCpStack.ts:36:25)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:17:1)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendPipelineStack/BuildBackendProject/Role/DefaultPolicy/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "BuildBackendProjectRoleDefaultPolicy7A35F20F",
+                        "trace": [
+                            "new Policy (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/policy.ts:89:22)",
+                            "Role.addToPrincipalPolicy (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-iam/lib/role.ts:229:28)",
+                            "PipelineProject.addToRolePolicy (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codebuild/lib/project.ts:158:17)",
+                            "new Project (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codebuild/lib/project.ts:728:10)",
+                            "new PipelineProject (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codebuild/lib/pipeline-project.ts:12:5)",
+                            "new backendCpStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/backendCpStack.ts:36:25)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:17:1)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendPipelineStack/BuildBackendProject/Resource": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "BuildBackendProjectB12FA858",
+                        "trace": [
+                            "new Project (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codebuild/lib/project.ts:682:22)",
+                            "new PipelineProject (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/aws-codebuild/lib/pipeline-project.ts:12:5)",
+                            "new backendCpStack (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lib/backendCpStack.ts:36:25)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/bin/ts-infra.ts:17:1)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Module.m._compile (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1056:23)",
+                            "Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Object.require.extensions.<computed> [as .ts] (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/index.ts:1059:12)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "main (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:198:14)",
+                            "Object.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/ts-node/src/bin.ts:288:3)",
+                            "Module._compile (internal/modules/cjs/loader.js:1068:30)",
+                            "Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)",
+                            "Module.load (internal/modules/cjs/loader.js:933:32)",
+                            "Function.Module._load (internal/modules/cjs/loader.js:774:14)",
+                            "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+                            "internal/main/run_main_module.js:17:47"
+                        ]
+                    }
+                ],
+                "/backendPipelineStack/CDKMetadata/Default": [
+                    {
+                        "type": "aws:cdk:logicalId",
+                        "data": "CDKMetadata",
+                        "trace": [
+                            "new MetadataResource (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:22:24)",
+                            "/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:140:5",
+                            "visit (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:202:5)",
+                            "visit (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:198:5)",
+                            "injectMetadataResources (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:131:3)",
+                            "Object.synthesize (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+                            "App.synth (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/stage.ts:94:23)",
+                            "process.<anonymous> (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/@aws-cdk/core/lib/app.ts:62:45)",
+                            "Object.onceWrapper (events.js:483:26)",
+                            "process.emit (events.js:376:20)",
+                            "process.emit (domain.js:470:12)",
+                            "process.emit (/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/node_modules/source-map-support/source-map-support.js:495:21)"
+                        ]
+                    }
+                ]
+            },
+            "displayName": "backendPipelineStack"
+        }
+    }
+}

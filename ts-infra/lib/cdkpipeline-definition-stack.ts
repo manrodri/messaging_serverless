@@ -15,8 +15,11 @@ export class messagingAppPipelineStack extends Stack {
     constructor(scope: Construct, id: string, bucket: string, props?: StackProps) {
         super(scope, id, props);
 
+
+
         // artifacts buckets
         const sourceArtifact = new codepipeline.Artifact();
+        const cloudAssemblyArtifact = new codepipeline.Artifact();
         const frontendArtifact = new codepipeline.Artifact();
         const backendArtifact = new codepipeline.Artifact();
 
@@ -63,15 +66,51 @@ export class messagingAppPipelineStack extends Stack {
 
 
 
-        // backend stage
-        // frontend stage
-        const backendProject = new codebuild.PipelineProject(this, 'backendProject',{
-            buildSpec: BuildSpec.fromSourceFilename("ts-infra/backendBuildspec.yaml"),
+        // backend stages
+
+        const synthBackendProject = new codebuild.PipelineProject(this, 'synthBackendProject', {
+            buildSpec: BuildSpec.fromSourceFilename('ts-infra/backendSynthBuildspec.yaml'),
+            environment: {
+                buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
+                environmentVariables: {
+                    CDK_DEFAULT_REGION: {
+                        value: cdk.Aws.REGION,
+                        type: codebuild.BuildEnvironmentVariableType.PLAINTEXT
+                    },
+                    CDK_DEFAULT_ACCOUNT: {
+                        value: cdk.Aws.ACCOUNT_ID,
+                        type: codebuild.BuildEnvironmentVariableType.PLAINTEXT
+                    }
+
+                }
+            }
+        })
+
+        synthBackendProject.role?.addToPolicy(new iam.PolicyStatement({actions: ["*"], resources: ["*"]}))
+
+        const synthAction = new codepipeline_actions.CodeBuildAction({
+            actionName: "SynthBackendAction",
+            project: synthBackendProject,
+            input: sourceArtifact,
+            outputs: [cloudAssemblyArtifact],
+        })
+
+
+        const backendProject = new codebuild.PipelineProject(this, 'backendDeployProject',{
+            buildSpec: BuildSpec.fromSourceFilename('ts-infra/backendDeployBuildSpec.yaml'),
             environment: {
                 buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
                 environmentVariables: {
                     HOSTING_BUCKET: {
                         value: frontendBucket.bucketName,
+                        type: codebuild.BuildEnvironmentVariableType.PLAINTEXT
+                    },
+                    CDK_DEFAULT_REGION: {
+                        value: cdk.Aws.REGION,
+                        type: codebuild.BuildEnvironmentVariableType.PLAINTEXT
+                    },
+                    CDK_DEFAULT_ACCOUNT: {
+                        value: cdk.Aws.ACCOUNT_ID,
                         type: codebuild.BuildEnvironmentVariableType.PLAINTEXT
                     }
                 }
@@ -94,6 +133,10 @@ export class messagingAppPipelineStack extends Stack {
                 {
                     stageName: "source",
                     actions: [sourceAction]
+                },
+                {
+                  stageName: 'synthStage',
+                  actions: [synthAction]
                 },
                 {
                     stageName: 'backend',

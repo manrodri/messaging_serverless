@@ -1,0 +1,477 @@
+{
+  "Resources": {
+    "MyFunctionServiceRole3C357FF2": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          },
+          "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "backendStack/MyFunction/ServiceRole/Resource"
+      }
+    },
+    "MyFunctionServiceRoleDefaultPolicyB705ABD4": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords"
+              ],
+              "Effect": "Allow",
+              "Resource": "*"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "MyFunctionServiceRoleDefaultPolicyB705ABD4",
+        "Roles": [
+          {
+            "Ref": "MyFunctionServiceRole3C357FF2"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "backendStack/MyFunction/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
+    "MyFunction3BAA72D1": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "AssetParametersa239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67S3Bucket0F54C58F"
+          },
+          "S3Key": {
+            "Fn::Join": [
+              "",
+              [
+                {
+                  "Fn::Select": [
+                    0,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParametersa239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67S3VersionKey076338CE"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Fn::Select": [
+                    1,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParametersa239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67S3VersionKey076338CE"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "MyFunctionServiceRole3C357FF2",
+            "Arn"
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "BUCKET_NAME": {
+              "Fn::ImportValue": "frontendBucket"
+            }
+          }
+        },
+        "Handler": "index.handler",
+        "Runtime": "nodejs14.x",
+        "TracingConfig": {
+          "Mode": "Active"
+        }
+      },
+      "DependsOn": [
+        "MyFunctionServiceRoleDefaultPolicyB705ABD4",
+        "MyFunctionServiceRole3C357FF2"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "backendStack/MyFunction/Resource",
+        "aws:asset:path": "/Users/manuelrodriguez/dev/AWS_DEVOPS/message_serverless/serverless_app/ts-infra/lambda-handler/proxy",
+        "aws:asset:property": "Code"
+      }
+    },
+    "MyFunctionCurrentVersion197490AF5f1b40add132fda24d6f6119360c96ea": {
+      "Type": "AWS::Lambda::Version",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "MyFunction3BAA72D1"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "backendStack/MyFunction/CurrentVersion/Resource"
+      }
+    },
+    "myapi162F20B8": {
+      "Type": "AWS::ApiGateway::RestApi",
+      "Properties": {
+        "Name": "myapi"
+      },
+      "Metadata": {
+        "aws:cdk:path": "backendStack/myapi/Resource"
+      }
+    },
+    "myapiCloudWatchRoleEB425128": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "backendStack/myapi/CloudWatchRole/Resource"
+      }
+    },
+    "myapiAccountC3A4750C": {
+      "Type": "AWS::ApiGateway::Account",
+      "Properties": {
+        "CloudWatchRoleArn": {
+          "Fn::GetAtt": [
+            "myapiCloudWatchRoleEB425128",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "myapi162F20B8"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "backendStack/myapi/Account"
+      }
+    },
+    "myapiDeploymentB7EF8EB7e3ddad8c028eaeea36d7201c89eb6a7b": {
+      "Type": "AWS::ApiGateway::Deployment",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "myapi162F20B8"
+        },
+        "Description": "Automatically created by the RestApi construct"
+      },
+      "DependsOn": [
+        "myapiconversationsconversationidGET811D4DDD",
+        "myapiconversationsconversationidPOST6F03CD77",
+        "myapiconversationsconversationid22170C2A",
+        "myapiconversationsGET95A8CE74",
+        "myapiconversationsPOST37424CA2",
+        "myapiconversations2647A5C8"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "backendStack/myapi/Deployment/Resource"
+      }
+    },
+    "myapiDeploymentStageprod329F21FF": {
+      "Type": "AWS::ApiGateway::Stage",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "myapi162F20B8"
+        },
+        "DeploymentId": {
+          "Ref": "myapiDeploymentB7EF8EB7e3ddad8c028eaeea36d7201c89eb6a7b"
+        },
+        "StageName": "prod"
+      },
+      "Metadata": {
+        "aws:cdk:path": "backendStack/myapi/DeploymentStage.prod/Resource"
+      }
+    },
+    "myapiconversations2647A5C8": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "myapi162F20B8",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "conversations",
+        "RestApiId": {
+          "Ref": "myapi162F20B8"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "backendStack/myapi/Default/conversations/Resource"
+      }
+    },
+    "myapiconversationsGETApiPermissionbackendStackmyapi292F8EF3GETconversationsD5109A41": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Ref": "MyFunctionCurrentVersion197490AF5f1b40add132fda24d6f6119360c96ea"
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:eu-west-1:423754860743:",
+              {
+                "Ref": "myapi162F20B8"
+              },
+              "/",
+              {
+                "Ref": "myapiDeploymentStageprod329F21FF"
+              },
+              "/GET/conversations"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "backendStack/myapi/Default/conversations/GET/ApiPermission.backendStackmyapi292F8EF3.GET..conversations"
+      }
+    },
+    "myapiconversationsGETApiPermissionTestbackendStackmyapi292F8EF3GETconversationsBB6EB793": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Ref": "MyFunctionCurrentVersion197490AF5f1b40add132fda24d6f6119360c96ea"
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:eu-west-1:423754860743:",
+              {
+                "Ref": "myapi162F20B8"
+              },
+              "/test-invoke-stage/GET/conversations"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "backendStack/myapi/Default/conversations/GET/ApiPermission.Test.backendStackmyapi292F8EF3.GET..conversations"
+      }
+    },
+    "myapiconversationsGET95A8CE74": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "ResourceId": {
+          "Ref": "myapiconversations2647A5C8"
+        },
+        "RestApiId": {
+          "Ref": "myapi162F20B8"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:eu-west-1:lambda:path/2015-03-31/functions/",
+                {
+                  "Ref": "MyFunctionCurrentVersion197490AF5f1b40add132fda24d6f6119360c96ea"
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "backendStack/myapi/Default/conversations/GET/Resource"
+      }
+    },
+    "myapiconversationsPOST37424CA2": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "POST",
+        "ResourceId": {
+          "Ref": "myapiconversations2647A5C8"
+        },
+        "RestApiId": {
+          "Ref": "myapi162F20B8"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "Type": "MOCK"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "backendStack/myapi/Default/conversations/POST/Resource"
+      }
+    },
+    "myapiconversationsconversationid22170C2A": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "myapiconversations2647A5C8"
+        },
+        "PathPart": "{conversation_id}",
+        "RestApiId": {
+          "Ref": "myapi162F20B8"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "backendStack/myapi/Default/conversations/{conversation_id}/Resource"
+      }
+    },
+    "myapiconversationsconversationidGET811D4DDD": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "ResourceId": {
+          "Ref": "myapiconversationsconversationid22170C2A"
+        },
+        "RestApiId": {
+          "Ref": "myapi162F20B8"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "Type": "MOCK"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "backendStack/myapi/Default/conversations/{conversation_id}/GET/Resource"
+      }
+    },
+    "myapiconversationsconversationidPOST6F03CD77": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "POST",
+        "ResourceId": {
+          "Ref": "myapiconversationsconversationid22170C2A"
+        },
+        "RestApiId": {
+          "Ref": "myapi162F20B8"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "Type": "MOCK"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "backendStack/myapi/Default/conversations/{conversation_id}/POST/Resource"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Analytics": "v2:deflate64:H4sIAAAAAAAAE01Qy07DMBD8Fu4btxGVEDdCETfUKEjcF2cJbmM78tpUUeR/J3YayGlnRvuY2VKU+0exv3vCKxeyvewmaR2J6d2jvEBDbIOTBBUz+VnrlOngaA17F6SH45ep0aEmTy6RU/BDyPI6GSEtnnrUny2K6TUY6ZU1qeUPf5Djm7aBNTmtOLEICrWYGttTXp1qbXslx9yXUQS+LzC5ZJHNAg6qQ09XHOdRYl8N6mZshZWUNhgPLzT0dtRksvMNS4HzyQWsmZ6R/8k2LLyR/7ZtkhYUYwRjWxJn3v2UB1E+zK8+s1KFmw8rTaJZ6i9q96MhhwEAAA=="
+      },
+      "Metadata": {
+        "aws:cdk:path": "backendStack/CDKMetadata/Default"
+      }
+    }
+  },
+  "Parameters": {
+    "AssetParametersa239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67S3Bucket0F54C58F": {
+      "Type": "String",
+      "Description": "S3 bucket for asset \"a239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67\""
+    },
+    "AssetParametersa239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67S3VersionKey076338CE": {
+      "Type": "String",
+      "Description": "S3 key for asset version \"a239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67\""
+    },
+    "AssetParametersa239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67ArtifactHash3C31BF2E": {
+      "Type": "String",
+      "Description": "Artifact hash for asset \"a239832cec5089404e7e7243d0d94ae424612861c969f6cdabb272c8de1b8c67\""
+    }
+  },
+  "Outputs": {
+    "myapiEndpoint8EB17201": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "myapi162F20B8"
+            },
+            ".execute-api.eu-west-1.",
+            {
+              "Ref": "AWS::URLSuffix"
+            },
+            "/",
+            {
+              "Ref": "myapiDeploymentStageprod329F21FF"
+            },
+            "/"
+          ]
+        ]
+      }
+    }
+  }
+}
