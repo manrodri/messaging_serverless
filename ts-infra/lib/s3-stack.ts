@@ -36,6 +36,14 @@ export class S3Stack extends cdk.Stack {
           exportName: "frontendBucketUrl"
         }
     )
+      new CfnOutput(
+        this,
+        'converstaionsUrl',
+        {
+          value: bucket.bucketWebsiteUrl + "/chats.html",
+          exportName: "converstationsUrl"
+        }
+    )
 
   }
 }

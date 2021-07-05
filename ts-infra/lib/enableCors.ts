@@ -1,12 +1,12 @@
 import * as apigateway from "@aws-cdk/aws-apigateway"
 
-export function addCorsOptions(apiResource: apigateway.IResource) {
+export function addCorsOptions(apiResource: apigateway.IResource, allowedDomain: string) {
   apiResource.addMethod('OPTIONS', new apigateway.MockIntegration({
     integrationResponses: [{
       statusCode: '200',
       responseParameters: {
         'method.response.header.Access-Control-Allow-Headers': "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-        'method.response.header.Access-Control-Allow-Origin': "'*'",
+        'method.response.header.Access-Control-Allow-Origin': `'${allowedDomain}'`,
         'method.response.header.Access-Control-Allow-Credentials': "'false'",
         'method.response.header.Access-Control-Allow-Methods': "'OPTIONS,GET,PUT,POST,DELETE'",
       },
