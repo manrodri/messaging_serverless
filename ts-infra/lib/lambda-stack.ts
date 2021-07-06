@@ -51,12 +51,12 @@ export class LambdaStack extends cdk.Stack {
 
         // resources and methods
         const conversations = api.root.addResource('conversations');
-        addCorsOptions(conversations, frontendBucket.bucketDomainName);
+        addCorsOptions(conversations, "*");
         conversations.addMethod('GET', getConversationHandler);
         conversations.addMethod('POST');
 
         const conversation = conversations.addResource('{conversation_id}');
-        addCorsOptions(conversation, frontendBucket.bucketDomainName)
+        addCorsOptions(conversation, "*")
         conversation.addMethod("GET");
         conversation.addMethod("POST");
 

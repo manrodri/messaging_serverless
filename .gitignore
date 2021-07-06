@@ -1,0 +1,4 @@
+!/client/node_modules/
+.idea/
+ts-infra/node_modules/
+ts-infra/cdk.out/
