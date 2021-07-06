@@ -92,6 +92,38 @@ export class messagingAppPipelineStack extends Stack {
             outputs: [backendArtifact] // optional
         });
 
+        // Integration Test backend
+
+        const integrationTestProject = new codebuild.PipelineProject(this, 'backendTestProject',{
+            buildSpec: BuildSpec.fromSourceFilename('ts-infra/backendIntegrationBuildspec.yaml'),
+            environment: {
+                buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
+                environmentVariables: {
+                    HOSTING_BUCKET: {
+                        value: frontendBucket.bucketName,
+                        type: codebuild.BuildEnvironmentVariableType.PLAINTEXT
+                    },
+                    CDK_DEFAULT_REGION: {
+                        value: cdk.Aws.REGION,
+                        type: codebuild.BuildEnvironmentVariableType.PLAINTEXT
+                    },
+                    CDK_DEFAULT_ACCOUNT: {
+                        value: cdk.Aws.ACCOUNT_ID,
+                        type: codebuild.BuildEnvironmentVariableType.PLAINTEXT
+                    }
+                }
+            }
+        });
+
+        const integrationTestArtifact = new codepipeline.Artifact()
+
+        const integrationTestAction = new codepipeline_actions.CodeBuildAction({
+            actionName: 'CodeBuild',
+            project: integrationTestProject,
+            input: backendArtifact,
+            outputs: [integrationTestArtifact]
+        });
+
         // pipeline
         const pipeline = new codepipeline.Pipeline(this, 'messagingAppPipeline', {
             pipelineName: "messagingAppPipeline",
@@ -106,6 +138,10 @@ export class messagingAppPipelineStack extends Stack {
                     actions: [backendAction]
                 },
                 {
+                    stageName: 'backendIntegrationTests',
+                    actions: [integrationTestAction]
+                },
+                {
                     stageName: 'frontend',
                     actions: [frontendAction]
                 },
@@ -113,7 +149,6 @@ export class messagingAppPipelineStack extends Stack {
             ]
 
         })
-
 
 
     }

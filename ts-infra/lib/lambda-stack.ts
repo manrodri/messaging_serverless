@@ -5,7 +5,8 @@ import * as path from "path";
 import * as iam from '@aws-cdk/aws-iam'
 import * as apigateway from "@aws-cdk/aws-apigateway"
 import {addCorsOptions} from "./enableCors";
-
+import * as cloudwatch from '@aws-cdk/aws-cloudwatch';
+import * as codedeploy from '@aws-cdk/aws-codedeploy'
 
 
 export class LambdaStack extends cdk.Stack {
@@ -63,6 +64,29 @@ export class LambdaStack extends cdk.Stack {
         this.UrlOutput = new cdk.CfnOutput(this, 'Url', {
             value: api.urlForPath('/conversations')
         })
+
+        // CloudWatch
+        const apiGateway5xx = new cloudwatch.Metric({
+            metricName: '5XXError',
+            namespace: 'AWS/ApiGateway',
+            dimensions: {
+                ApiName: 'chats'
+            },
+            statistic: 'Sum',
+        });
+        const failureAlarm = new cloudwatch.Alarm(this, 'RollbackAlarm', {
+            metric: apiGateway5xx,
+            threshold: 1,
+            evaluationPeriods: 1,
+        });
+
+        new codedeploy.LambdaDeploymentGroup(this, 'DeploymentGroup ', {
+            alias: alias,
+            deploymentConfig: codedeploy.LambdaDeploymentConfig.CANARY_10PERCENT_10MINUTES,
+            alarms: [
+                failureAlarm
+            ]
+        });
 
 
     }

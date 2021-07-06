@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+
+  install:
+    commands:
+     - cd ts-infra
+     - npm install
+     - echo "Install testing framework here"
+  pre_build:
+    commands:
+     - npm install -g aws-cdk
+
+  build:
+    commands:
+      - echo run tests
+
+artifacts:
+  files: "**/*"
