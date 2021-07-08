@@ -23,7 +23,9 @@ exports.handler = function (event, context, callback) {
         });
     };
 
-    var pathParameter = event.pathParameters.conversation_id;
+    var pathParameter = event.pathParameters.conversations;
+    console.log(pathParameter)
+    console.log(event.pathParameters)
 
 
     if (!event.pathParameters) {
@@ -34,10 +36,10 @@ exports.handler = function (event, context, callback) {
             done(err, err ? null : JSON.parse(data.Body.toString()));
         });
     } else if (pathParameter) {
-        var id = path.substring('conversations/'.length);
+
         S3.getObject({
             Bucket: bucket,
-            Key: 'data/conversations/' + id + '.json'
+            Key: 'data/conversations/' + pathParameter + '.json'
         }, function (err, data) {
             done(err, err ? null : JSON.parse(data.Body.toString()));
         });
