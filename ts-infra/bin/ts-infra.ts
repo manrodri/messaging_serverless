@@ -4,7 +4,7 @@ import * as cdk from '@aws-cdk/core';
 import { S3Stack } from '../lib/s3-stack';
 import {LambdaStack} from "../lib/lambda-stack";
 import {messagingAppPipelineStack} from "../lib/cdkpipeline-definition-stack";
-import {ApiGatewayStack} from "../lib/apiGateway-stack";
+import {ApigwDemoStack} from "../lib/apiGateway-stack";
 
 const app = new cdk.App();
 
@@ -14,7 +14,7 @@ const environment = { account: account, region: region }
 
 new S3Stack(app, 'S3Stack',{env:environment});
 const backendStack = new LambdaStack(app, 'backendStack',cdk.Fn.importValue("frontendBucket"), {env: environment})
-const apiGatewayStack = new ApiGatewayStack(app, 'apiGatewayStack', backendStack.lambdaAlias , {env: environment})
+const apiGatewayStack = new ApigwDemoStack(app, 'apiGatewayStack',  'env',{env: environment})
 
 new messagingAppPipelineStack(app, 'pipelineStack', cdk.Fn.importValue("frontendBucket"), {
     env: environment
