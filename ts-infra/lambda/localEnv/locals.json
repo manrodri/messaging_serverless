@@ -1,0 +1,5 @@
+{
+  "LambdaStack/fn": {
+      "BUCKET_NAME": "messages.soydecai.xyz"
+  }
+}

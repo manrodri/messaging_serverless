@@ -10,8 +10,6 @@ var bucket = process.env.BUCKET_NAME || 'messages.soydecai.xyz';
 
 exports.handler = function (event, context, callback) {
 
-    console.log(event)
-
     const done = function (err, res) {
         callback(null, {
             statusCode: err ? '400' : '200',
@@ -23,17 +21,16 @@ exports.handler = function (event, context, callback) {
         });
     };
 
-    var pathParameter = event.pathParameters.conversation_id;
+    var path = event.pathParameters.proxy;
 
-
-    if (!event.pathParameters) {
+    if (path === 'conversations') {
         S3.getObject({
             Bucket: bucket,
             Key: 'data/conversations.json'
         }, function (err, data) {
             done(err, err ? null : JSON.parse(data.Body.toString()));
         });
-    } else if (pathParameter) {
+    } else if (path.startsWith('conversations/')) {
         var id = path.substring('conversations/'.length);
         S3.getObject({
             Bucket: bucket,

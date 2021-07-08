@@ -13,7 +13,7 @@
     ]
   },
   "pathParameters": {
-    "proxy": "1"
+    "conversations": "1"
   },
   "stageVariables": {
     "baz": "qux"
