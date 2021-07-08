@@ -3,7 +3,7 @@ phases:
 
   install:
     commands:
-     - cd ts-infra
+     - cd infra
      - npm install
      - echo "Install testing framework here"
   pre_build:
