@@ -33,7 +33,7 @@ export class messagingAppPipelineStack extends Stack {
         // frontend stage
         const frontendBucket = s3.Bucket.fromBucketName(this, 'bucket', bucket)
         const frontendProject = new codebuild.PipelineProject(this, 'MyProject',{
-            buildSpec: BuildSpec.fromSourceFilename("ts-infra/buildspec.yaml"),
+            buildSpec: BuildSpec.fromSourceFilename("infra/buildspec.yaml"),
             environment: {
                 buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
                 environmentVariables: {
@@ -56,7 +56,7 @@ export class messagingAppPipelineStack extends Stack {
 
         // backend stage
         const backendProject = new codebuild.PipelineProject(this, 'backendDeployProject',{
-            buildSpec: BuildSpec.fromSourceFilename('ts-infra/backendDeployBuildSpec.yaml'),
+            buildSpec: BuildSpec.fromSourceFilename('infra/backendDeployBuildSpec.yaml'),
             environment: {
                 buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
                 environmentVariables: {
