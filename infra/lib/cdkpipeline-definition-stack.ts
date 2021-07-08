@@ -87,7 +87,7 @@ export class messagingAppPipelineStack extends Stack {
         // Integration Test backend
 
         const integrationTestProject = new codebuild.PipelineProject(this, 'backendTestProject',{
-            buildSpec: BuildSpec.fromSourceFilename('ts-infra/backendIntegrationBuildspec.yaml'),
+            buildSpec: BuildSpec.fromSourceFilename('infra/backendIntegrationBuildspec.yaml'),
             environment: {
                 buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
                 environmentVariables: {
