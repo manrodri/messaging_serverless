@@ -30,11 +30,11 @@ exports.handler = function (event, context, callback) {
         }, function (err, data) {
             done(err, err ? null : JSON.parse(data.Body.toString()));
         });
-    } else if (event.pathParameters.conversations) {
+    } else if (event.pathParameters.conversation_id) {
 
         S3.getObject({
             Bucket: bucket,
-            Key: 'data/conversations/' + event.pathParameters.conversations + '.json'
+            Key: 'data/conversations/' + event.pathParameters.conversation_id + '.json'
         }, function (err, data) {
             done(err, err ? null : JSON.parse(data.Body.toString()));
         });
