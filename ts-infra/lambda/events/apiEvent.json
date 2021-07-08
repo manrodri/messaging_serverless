@@ -12,9 +12,7 @@
       "bar"
     ]
   },
-  "pathParameters": {
-    "conversations": "1"
-  },
+  "pathParameters": null,
   "stageVariables": {
     "baz": "qux"
   },

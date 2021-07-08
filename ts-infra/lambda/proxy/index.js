@@ -23,11 +23,6 @@ exports.handler = function (event, context, callback) {
         });
     };
 
-    var pathParameter = event.pathParameters.conversations;
-    console.log(pathParameter)
-    console.log(event.pathParameters)
-
-
     if (!event.pathParameters) {
         S3.getObject({
             Bucket: bucket,
@@ -35,11 +30,11 @@ exports.handler = function (event, context, callback) {
         }, function (err, data) {
             done(err, err ? null : JSON.parse(data.Body.toString()));
         });
-    } else if (pathParameter) {
+    } else if (event.pathParameters.conversations) {
 
         S3.getObject({
             Bucket: bucket,
-            Key: 'data/conversations/' + pathParameter + '.json'
+            Key: 'data/conversations/' + event.pathParameters.conversations + '.json'
         }, function (err, data) {
             done(err, err ? null : JSON.parse(data.Body.toString()));
         });
