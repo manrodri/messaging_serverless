@@ -13,7 +13,7 @@ phases:
   build:
     commands:
       - cdk deploy S3Stack --require-approval=never --verbose
-      - cdk deploy backendStack --require-approval=never --verbose
+      - cdk deploy BackendStack --require-approval=never --verbose
 
 artifacts:
   files: "**/*"

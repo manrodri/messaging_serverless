@@ -1,5 +1,4 @@
 /client/node_modules/
 .idea/
 ts-infra/cdk.out/
-!/infra/.aws-sam/
 /infra/.aws-sam/
