@@ -1,71 +1,33 @@
-import * as cdk from "@aws-cdk/core";
-import * as lambda from "@aws-cdk/aws-lambda"
-import * as apigateway from "@aws-cdk/aws-apigateway";
-import {addCorsOptions} from "./enableCors";
+import * as cdk from '@aws-cdk/core';
+import * as apigw from '@aws-cdk/aws-apigateway';
+import * as lambda from '@aws-cdk/aws-lambda';
+import { ServicePrincipal } from '@aws-cdk/aws-iam';
+import * as path from "path";
 
-export class ApiGatewayStack extends cdk.Stack {
-     stgUrlOutput: cdk.CfnOutput;
+export class ApigwDemoStack extends cdk.Stack {
+  constructor(scope: cdk.Construct, id: string, deployment_env: string, props?: cdk.StackProps) {
+    super(scope, id, props);
 
-    constructor(scope: cdk.Construct, id: string, fn: lambda.Alias, props?: cdk.StackProps) {
-        super(scope, id, props);
+    const env = deployment_env
 
+    // First, create a test lambda
+    const myLambda = new lambda.Function(this, 'my_lambda', {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      code: lambda.Code.fromAsset(path.join(__dirname, '../lambda/proxy')),
+      handler: 'test.handler'
+    });
 
+    // IMPORTANT: Lambda grant invoke to APIGateway
+    myLambda.grantInvoke(new ServicePrincipal('apigateway.amazonaws.com'));
 
-        const api = new apigateway.RestApi(
-            this,
-            'newChats',
-        );
+    // Then, create the API construct, integrate with lambda
+    const api = new apigw.RestApi(this, 'my_api', { deploy: false });
+    const integration = new apigw.LambdaIntegration(myLambda);
+    api.root.addMethod('ANY', integration)
 
-        // integrations
-        const getConversationHandlerStg =
-            new apigateway.LambdaIntegration(fn);
+    // Then create an explicit Deployment construct
+    const deployment  = new apigw.Deployment(this, 'my_deployment', { api });
 
-        // resources and methods
-        const conversations = api.root.addResource('conversations');
-        addCorsOptions(conversations, "*");
-        conversations.addMethod('GET', getConversationHandlerStg);
-        conversations.addMethod('POST');
-
-        const conversation = conversations.addResource('{conversation_id}');
-        addCorsOptions(conversation, "*")
-        conversation.addMethod("GET");
-        conversation.addMethod("POST");
-
-
-        this.stgUrlOutput = new cdk.CfnOutput(this, 'stgUrl', {
-            value: api.urlForPath('/conversations')
-        })
-
-
-        const stgDeployment = new apigateway.Deployment(this, 'stgDeployment', {
-            api: api,
-            description: "stg deployment"
-
-        })
-
-        const stgStage = new apigateway.Stage(this, 'stgStage', {
-            deployment: stgDeployment,
-            stageName: 'stg'
-        })
-
-        const prodDeployment = new apigateway.Deployment(this, 'prodDeployment', {
-            api: api,
-            description: "prod deployment",
-
-        })
-
-        const prodStage = new apigateway.Stage(this, 'prodStage', {
-            deployment: prodDeployment,
-            stageName: 'prod',
-
-        })
-
-        api.deploymentStage = stgStage
-
-
-
-
-
-
-    }
+    api.deploymentStage = new apigw.Stage(this, `${env}_stage`, {deployment, stageName: `${env}`})
+  }
 }

@@ -10,8 +10,6 @@ var bucket = process.env.BUCKET_NAME || 'messages.soydecai.xyz';
 
 exports.handler = function (event, context, callback) {
 
-    console.log(event)
-
     const done = function (err, res) {
         callback(null, {
             statusCode: err ? '400' : '200',
