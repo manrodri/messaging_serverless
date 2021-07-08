@@ -1,5 +1,6 @@
 import * as lambda from "@aws-cdk/aws-lambda"
 import * as cdk from "@aws-cdk/core";
+import { CfnOutput} from "@aws-cdk/core";
 import {Bucket} from "@aws-cdk/aws-s3";
 import * as path from "path";
 import * as iam from '@aws-cdk/aws-iam'
@@ -10,7 +11,9 @@ import * as codedeploy from '@aws-cdk/aws-codedeploy'
 
 
 export class LambdaStack extends cdk.Stack {
-    UrlOutput: cdk.CfnOutput;
+     lambdaAlias: lambda.Alias;
+    public ConversationsUrlOutput: CfnOutput;
+    public ConversationUrlOutput: CfnOutput;
 
     constructor(scope: cdk.Construct, id: string, bucket: string, props?: cdk.StackProps) {
         super(scope, id, props);
@@ -57,12 +60,16 @@ export class LambdaStack extends cdk.Stack {
 
         const conversation = conversations.addResource('{conversation_id}');
         addCorsOptions(conversation, "*")
-        conversation.addMethod("GET");
-        conversation.addMethod("POST");
+        conversation.addMethod("GET", getConversationHandler);
+        conversation.addMethod("POST", getConversationHandler);
 
 
-        this.UrlOutput = new cdk.CfnOutput(this, 'Url', {
+        this.ConversationsUrlOutput = new cdk.CfnOutput(this, 'ConversationsUrl', {
             value: api.urlForPath('/conversations')
+        })
+
+        this.ConversationUrlOutput = new cdk.CfnOutput(this, 'ConversationUrl', {
+            value: api.urlForPath('/conversation')
         })
 
         // CloudWatch
@@ -87,6 +94,8 @@ export class LambdaStack extends cdk.Stack {
                 failureAlarm
             ]
         });
+
+        this.lambdaAlias = alias
 
 
     }
