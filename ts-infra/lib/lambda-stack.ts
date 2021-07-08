@@ -87,13 +87,13 @@ export class LambdaStack extends cdk.Stack {
             evaluationPeriods: 1,
         });
 
-        new codedeploy.LambdaDeploymentGroup(this, 'DeploymentGroup ', {
-            alias: alias,
-            deploymentConfig: codedeploy.LambdaDeploymentConfig.CANARY_10PERCENT_10MINUTES,
-            alarms: [
-                failureAlarm
-            ]
-        });
+        // new codedeploy.LambdaDeploymentGroup(this, 'DeploymentGroup ', {
+        //     alias: alias,
+        //     deploymentConfig: codedeploy.LambdaDeploymentConfig.CANARY_10PERCENT_10MINUTES,
+        //     alarms: [
+        //         failureAlarm
+        //     ]
+        // });
 
         this.lambdaAlias = alias
 
