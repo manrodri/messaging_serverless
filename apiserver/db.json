@@ -1,0 +1,75 @@
+{
+  "conversations": [
+    {
+      "participants": [
+        "Student",
+        "Brian"
+      ],
+      "id": "1"
+    },
+    {
+      "participants": [
+        "Student",
+        "Frank"
+      ],
+      "id": "2"
+    }
+  ],
+  "conversation": [
+    {
+      "id": "1",
+      "participants": [
+        "Student",
+        "Brian"
+      ],
+      "messages": [
+        {
+          "sender": "Brian",
+          "time": 1512246299194,
+          "message": "Hello! I'm Brian, one of your instructors. I hope you're enjoying this course."
+        },
+        {
+          "message": "hello",
+          "sender": "Student",
+          "time": 1512246342159
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "participants": [
+        "Student",
+        "Frank"
+      ],
+      "messages": [
+        {
+          "sender": "Frank",
+          "time": 1512246342159,
+          "message": "This is Frank. I'm also sending you a message."
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "name": "Student",
+      "id": 1
+    },
+    {
+      "name": "Brian",
+      "id": 2
+    },
+    {
+      "name": "Jordi",
+      "id": 3
+    },
+    {
+      "name": "Gian Luca",
+      "id": 4
+    },
+    {
+      "name": "Manuel",
+      "id": 5
+    }
+  ]
+}
